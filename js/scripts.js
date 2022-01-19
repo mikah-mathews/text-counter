@@ -15,10 +15,10 @@ function wordCounter(text) {
 }
 
 function numberOfOccurrencesInText(word, text) { 
-  const wordArray = text.split(" ");
-  if (text.trim().length === 0) {
+  if ((text.trim().length === 0) || (word.trim().length === 0)) {
     return 0;
   }
+  const wordArray = text.split(" ");
   let wordOccurrences = 0;
   wordArray.forEach(function(element) {
     if (element.toLowerCase().includes(word.toLowerCase())) {
@@ -35,7 +35,7 @@ $(document).ready(function() {
     const word = $("#word").val();
     const wordCount = wordCounter(passage);
     const occurrencesOfWord = numberOfOccurrencesInText(word, passage);
-    $("total-count").html(wordCount);
+    $("#total-count").html(wordCount);
     $("#selected-count").html(occurrencesOfWord);
   });
 });
